@@ -5,7 +5,7 @@ import Image from "next/image";
 
 export default function Navbar() {
   return (
-    <header className="flex justify-center items-center p-3 bg-black text-white shadow-md">
+    <header className="flex justify-center items-center p-2 bg-black text-white shadow-md">
       <nav>
         <ul className="flex gap-8 items-center">
           {/* ✅ Apple Logo */}
