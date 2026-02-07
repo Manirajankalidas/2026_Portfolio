@@ -1,6 +1,97 @@
 import ExperienceImageStack from "../components/ExperienceImageStack";
 import Link from "next/link";
 
+const quanticImages = [
+  {
+    src: "/experience/multi-camera.png",  
+    alt: "Quantic site",
+    top: "top-0",
+    left: "left-0",
+    width: "w-[320px]",
+    height: "h-[270px]",
+    z: 10,
+  },
+  {
+    src: "/experience/Quantic_1.jpeg",
+    alt: "Monitoring",
+    top: "top-24",
+    left: "left-70",
+    width: "w-[420px]",
+    height: "h-[300px]",
+    z: 30,
+  },
+  {
+    src: "/experience/Quantic_4.jpeg",
+    alt: "Dashboard",
+    top: "top-80",
+    left: "left-0",
+    width: "w-[350px]",
+    height: "h-[230px]",
+    z: 20,
+    shadow: true,
+  },
+];
+
+const mewImages = [
+  {
+    src: "/experience/mew_4.jpeg",
+    alt: "Automation lab",
+    top: "top-12",
+    left: "left-0",
+    width: "w-[480px]",
+    height: "h-[300px]",
+    z: 20,
+  },
+  {
+    src: "/experience/mew_2.jpeg",
+    alt: "PLC training",
+    top: "top-40",
+    left: "left-52",
+    width: "w-[420px]",
+    height: "h-[360px]",
+    z: 30,
+  },
+  {
+    src: "/experience/mew_5.jpeg",
+    alt: "Workshop",
+    top: "top-0",
+    left: "left-24",
+    width: "w-[360px]",
+    height: "h-[240px]",
+    z: 10,
+  },
+];
+
+const lsImages = [
+  {
+    src: "/experience/ls_contents.png",
+    alt: "Content creation",
+    top: "top-0",
+    left: "left-0",
+    width: "w-[480px]",
+    height: "h-[280px]",
+    z: 20,
+  },
+  {
+    src: "/experience/ls_python_bootcamp.png",
+    alt: "Bootcamp",
+    top: "top-32",
+    left: "left-44",
+    width: "w-[520px]",
+    height: "h-[340px]",
+    z: 30,
+  },
+  {
+    src: "/experience/Atlassian_event.jpeg",
+    alt: "Event",
+    top: "top-12",
+    left: "left-24",
+    width: "w-[360px]",
+    height: "h-[240px]",
+    z: 10,
+  },
+];
+
 export default function ExperiencePage() {
   return (
     <>
@@ -12,12 +103,16 @@ export default function ExperiencePage() {
 
             {/* Images – 70% */}
             <div className="md:col-span-7 md:order-1">
-              <ExperienceImageStack
+              {/* <ExperienceImageStack
                 images={[
                   { src: "/experience/Quantic_4.jpeg", alt: "Quantic site" },
                   { src: "/experience/Quantic_1.jpeg", alt: "Quantic monitoring" },
                   { src: "/experience/Quantic_2.jpeg", alt: "Quantic dashboard" },
                 ]}
+              /> */}
+              <ExperienceImageStack
+                images={quanticImages}
+                containerHeight="h-[520px]"
               />
             </div>
 
@@ -72,12 +167,16 @@ export default function ExperiencePage() {
 
             {/* Images – 70% */}
             <div className="md:col-span-6">
-              <ExperienceImageStack
+              {/* <ExperienceImageStack
                 images={[
                   { src: "/experience/mew_4.jpeg", alt: "Automation lab" },
                   { src: "/experience/mew_2.jpeg", alt: "PLC training" },
                   { src: "/experience/mew_5.jpeg", alt: "Student workshop" },
                 ]}
+              /> */}
+              <ExperienceImageStack
+                images={mewImages}
+                containerHeight="h-[500px]"
               />
             </div>
 
@@ -94,12 +193,16 @@ export default function ExperiencePage() {
 
             {/* Images – 70% */}
             <div className="md:col-span-7 md:order-1">
-              <ExperienceImageStack
+              {/* <ExperienceImageStack
                 images={[
-                  { src: "/experience/Quantic_4.jpeg", alt: "Quantic site" },
-                  { src: "/experience/Quantic_1.jpeg", alt: "Quantic monitoring" },
-                  { src: "/experience/Quantic_2.jpeg", alt: "Quantic dashboard" },
+                  { src: "/experience/ls_contents.png", alt: "Quantic site" },
+                  { src: "/experience/ls_python_bootcamp.png", alt: "Quantic monitoring" },
+                  { src: "/experience/Atlassian_event.jpeg", alt: "Quantic dashboard" },
                 ]}
+              /> */}
+              <ExperienceImageStack
+                images={lsImages}
+                containerHeight="h-[500px]"
               />
             </div>
 
