@@ -1,6 +1,8 @@
 import ExperienceImageStack from "../components/ExperienceImageStack";
 import Link from "next/link";
 
+
+
 const quanticImages = [
   {
     src: "/experience/multi-camera.png",  
@@ -32,62 +34,67 @@ const quanticImages = [
   },
 ];
 
+
 const mewImages = [
   {
     src: "/experience/mew_4.jpeg",
     alt: "Automation lab",
-    top: "top-12",
-    left: "left-0",
-    width: "w-[480px]",
+    top: "top-10",
+    left: "left-120",
+    width: "w-[430px]",
     height: "h-[300px]",
-    z: 20,
+    z: 10,
+    rotate: "rotate-6",
   },
   {
     src: "/experience/mew_2.jpeg",
     alt: "PLC training",
-    top: "top-40",
+    top: "top-50",
     left: "left-52",
-    width: "w-[420px]",
-    height: "h-[360px]",
+    width: "w-[360px]",
+    height: "h-[300px]",
     z: 30,
+    rotate: "rotate-2",
   },
   {
     src: "/experience/mew_5.jpeg",
     alt: "Workshop",
-    top: "top-0",
-    left: "left-24",
-    width: "w-[360px]",
-    height: "h-[240px]",
-    z: 10,
+    top: "top-10",
+    left: "left-0",
+    width: "w-[430px]",
+    height: "h-[300px]",
+    z: 20,
+    rotate: "-rotate-6",
   },
 ];
 
 const lsImages = [
   {
-    src: "/experience/ls_contents.png",
+    src: "/experience/ls_python_bootcamp.png",  
     alt: "Content creation",
-    top: "top-0",
-    left: "left-0",
-    width: "w-[480px]",
-    height: "h-[280px]",
+    top: "top-70",
+    left: "left-100",
+    width: "w-[430px]",
+    height: "h-[240px]",
     z: 20,
   },
   {
-    src: "/experience/ls_python_bootcamp.png",
+    src: "/experience/ls_contents.png",
     alt: "Bootcamp",
-    top: "top-32",
-    left: "left-44",
-    width: "w-[520px]",
-    height: "h-[340px]",
+    top: "top-40",
+    left: "left-30",
+    width: "w-[430px]",
+    height: "h-[240px]",
+    frame: true,
     z: 30,
   },
   {
     src: "/experience/Atlassian_event.jpeg",
     alt: "Event",
-    top: "top-12",
-    left: "left-24",
-    width: "w-[360px]",
-    height: "h-[240px]",
+    top: "top-0",
+    left: "left-0",
+    width: "w-[430px]",
+    height: "h-[220px]",
     z: 10,
   },
 ];
@@ -102,14 +109,7 @@ export default function ExperiencePage() {
           <div className="grid grid-cols-1 md:grid-cols-10 gap-16 items-center">
 
             {/* Images – 70% */}
-            <div className="md:col-span-7 md:order-1">
-              {/* <ExperienceImageStack
-                images={[
-                  { src: "/experience/Quantic_4.jpeg", alt: "Quantic site" },
-                  { src: "/experience/Quantic_1.jpeg", alt: "Quantic monitoring" },
-                  { src: "/experience/Quantic_2.jpeg", alt: "Quantic dashboard" },
-                ]}
-              /> */}
+            <div className="md:col-span-6 md:order-1">
               <ExperienceImageStack
                 images={quanticImages}
                 containerHeight="h-[520px]"
@@ -117,7 +117,7 @@ export default function ExperiencePage() {
             </div>
 
             {/* Text – 30% */}
-            <div className="md:col-span-3 md:order-2">
+            <div className="md:col-span-4 md:order-2">
               <h1 className="text-5xl font-semibold tracking-tight text-black">
                 Computer Vision Engineer
               </h1>
@@ -163,21 +163,27 @@ export default function ExperiencePage() {
               <p className="mt-2 text-sm text-neutral-400">
                 Bangalore · March 2023 – May 2024
               </p>
+              <div className="mt-10 inline-flex items-center group">
+                <Link href="/" className="text-sm font-medium text-white hover:opacity-70">
+                  Explore Experience
+                </Link>
+                <span className="ml-3 transform transition-transform group-hover:translate-x-1">
+                  →
+                </span>
+              </div>
+
             </div>
 
             {/* Images – 70% */}
             <div className="md:col-span-6">
-              {/* <ExperienceImageStack
-                images={[
-                  { src: "/experience/mew_4.jpeg", alt: "Automation lab" },
-                  { src: "/experience/mew_2.jpeg", alt: "PLC training" },
-                  { src: "/experience/mew_5.jpeg", alt: "Student workshop" },
-                ]}
-              /> */}
               <ExperienceImageStack
                 images={mewImages}
                 containerHeight="h-[500px]"
               />
+              {/* <ExperienceImageStack
+                images={mewImages}
+                containerHeight="h-[480px]"
+              /> */}
             </div>
 
           </div>
@@ -193,13 +199,6 @@ export default function ExperiencePage() {
 
             {/* Images – 70% */}
             <div className="md:col-span-7 md:order-1">
-              {/* <ExperienceImageStack
-                images={[
-                  { src: "/experience/ls_contents.png", alt: "Quantic site" },
-                  { src: "/experience/ls_python_bootcamp.png", alt: "Quantic monitoring" },
-                  { src: "/experience/Atlassian_event.jpeg", alt: "Quantic dashboard" },
-                ]}
-              /> */}
               <ExperienceImageStack
                 images={lsImages}
                 containerHeight="h-[500px]"
