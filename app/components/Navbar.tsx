@@ -43,7 +43,7 @@ export default function Navbar() {
               group-hover:opacity-100 group-hover:visible
               transition-all duration-300
             ">
-              <div className="max-w-7xl mx-auto px-140 py-12">
+              <div className="max-w-7xl mx-auto px-135 py-12">
 
                 <div className="flex flex-col space-y-6">
                   <Link href="/research/computer-vision" className="text-xl hover:text-gray-600">
