@@ -94,7 +94,7 @@ const lsImages = [
     top: "top-0",
     left: "left-0",
     width: "w-[430px]",
-    height: "h-[220px]",
+    height: "h-[221px]",
     z: 10,
   },
 ];
