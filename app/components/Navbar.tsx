@@ -46,7 +46,7 @@ export default function Navbar() {
               <div className="max-w-7xl mx-auto px-135 py-12">
 
                 <div className="flex flex-col space-y-6">
-                  <Link href="/research/Computer-vision" className="text-xl hover:text-gray-600">
+                  <Link href="/research/computer-vision" className="text-xl hover:text-gray-600">
                     Computer Vision
                   </Link>
                   <Link href="/research/data-science" className="text-xl hover:text-gray-600">
