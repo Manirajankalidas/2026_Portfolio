@@ -39,7 +39,7 @@ export default function Navbar() {
             <div className="
               absolute top-full left-1/2 -translate-x-1/2
               w-screen bg-white text-black
-              opacity-0 invisible
+              opacity-1 invisible
               group-hover:opacity-100 group-hover:visible
               transition-all duration-300
             ">
