@@ -12,13 +12,13 @@ export default function ProjectsPage() {
   return (
     <>
       <PageHeader title="Projects" intro="Things I have built. More will be added here." />
-      <Container className="grid gap-6 pb-16 md:grid-cols-2">
-        {projects.map((p) => (
-          <ProjectCard key={p.slug} project={p} />
-        ))}
-        <div className="flex min-h-[200px] items-center justify-center rounded-[28px] border-2 border-dashed border-line p-8 text-center text-xl text-muted md:col-span-2">
-          More projects coming soon.
+      <Container className="pb-16">
+        <div className="grid gap-x-6 gap-y-12 sm:grid-cols-[repeat(auto-fill,minmax(min(100%,454px),454px))]">
+          {projects.map((p) => (
+            <ProjectCard key={p.slug} project={p} />
+          ))}
         </div>
+        <p className="mt-12 text-[17px] text-muted">More projects coming soon.</p>
       </Container>
     </>
   );

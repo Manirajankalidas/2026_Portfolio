@@ -24,7 +24,7 @@ export default async function AreaPage({ params }: Props) {
   return (
     <>
       <Container className="pt-12">
-        <Link href="/expertise" className="text-[17px] text-accent hover:underline">‹ Areas of expertise</Link>
+        <Link href="/expertise" className="text-[17px] text-accent hover:underline">‹ Areas of Expertise</Link>
       </Container>
       <PageHeader title={found.title} intro={found.summary} />
       <Container className="grid gap-5 pb-16 sm:grid-cols-2">

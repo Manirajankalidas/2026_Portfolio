@@ -7,7 +7,7 @@ export const site = {
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000",
   email: "Manirajankalidas@gmail.com",
   links: {
-    linkedin: "https://www.linkedin.com/in/Manirajan-k/",
+    linkedin: "https://www.linkedin.com/in/manirajan-k/",
     github: "https://github.com/Manirajankalidas",
   },
   // Put your resume in /public (without a phone number) and set e.g. "/resume.pdf".

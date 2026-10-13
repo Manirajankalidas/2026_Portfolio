@@ -4,7 +4,7 @@ date: 2026-09-08
 tag: Computer Vision
 summary: A Jetson's specs don't guarantee a smooth deployment. Check the hardware before you buy, and validate JetPack, CUDA, PyTorch, ONNX Runtime and TensorRT before you build on the device.
 image: /blog/jetson-mistakes-that-cost-days.webp
-link: https://www.linkedin.com/pulse/jetson-mistakes-can-cost-you-days-debugging-Manirajan-k-7bbjc/
+link: https://www.linkedin.com/pulse/jetson-mistakes-can-cost-you-days-debugging-manirajan-k-7bbjc/
 draft: false
 ---
 

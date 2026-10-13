@@ -4,7 +4,7 @@ import { Container, PageHeader } from "@/components/ui";
 import { areas } from "@/content/expertise";
 
 export const metadata: Metadata = {
-  title: "Areas of expertise",
+  title: "Areas of Expertise",
   description: "Computer vision, data science and IoT: topics Manirajan works on.",
 };
 
@@ -12,7 +12,7 @@ export default function ExpertisePage() {
   return (
     <>
       <PageHeader
-        title="Areas of expertise"
+        title="Areas of Expertise"
         intro="Three areas I work in. Each topic page is added as I write it."
       />
       <Container className="pb-16">

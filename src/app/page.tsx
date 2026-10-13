@@ -58,7 +58,7 @@ export default function Home() {
       <section className="bg-alt py-16">
         <Container>
           <SectionTitle title="Engineering in Action" href="/projects" linkLabel="All projects" intro="More coming soon." />
-          <div className="grid gap-6 md:grid-cols-2">
+          <div className="grid gap-x-6 gap-y-12 sm:grid-cols-[repeat(auto-fill,minmax(min(100%,454px),454px))]">
             {projects.map((p) => (
               <ProjectCard key={p.slug} project={p} />
             ))}
@@ -69,7 +69,7 @@ export default function Home() {
       {/* Expertise */}
       <section className="py-16">
         <Container>
-          <SectionTitle title="Areas of expertise" />
+          <SectionTitle title="Areas of Expertise" />
           <div className="grid gap-6 md:grid-cols-3">
             {areas.map((a) => (
               <AreaCard key={a.slug} area={a} />

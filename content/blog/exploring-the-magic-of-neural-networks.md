@@ -4,7 +4,7 @@ date: 2023-10-19
 tag: Data Science
 summary: Part one of a series. A Celsius-to-Fahrenheit example shows the difference between writing a rule by hand and letting a one-neuron network learn it from examples, using Python and TensorFlow/Keras.
 image: /blog/exploring-the-magic-of-neural-networks.webp
-link: https://www.linkedin.com/pulse/exploring-magic-neural-networks-Manirajan-k-3qk1e/
+link: https://www.linkedin.com/pulse/exploring-magic-neural-networks-manirajan-k-3qk1e/
 draft: false
 ---
 

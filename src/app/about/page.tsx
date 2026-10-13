@@ -11,8 +11,16 @@ export const metadata: Metadata = {
 };
 
 const highlights = [
-  { eyebrow: "Industrial AI", value: "10+", label: "plants AI solution deployment" },
-  { eyebrow: "Streaming", value: "50+", label: "camera streams handled in computer vision applications" },
+  {
+    eyebrow: "Industrial AI",
+    value: "10+",
+    label: "plants AI solution deployment",
+  },
+  {
+    eyebrow: "Streaming",
+    value: "50+",
+    label: "camera streams handled in computer vision applications",
+  },
   {
     eyebrow: "Edge AI",
     value: "Jetson",
@@ -35,11 +43,27 @@ const highlights = [
 ];
 const intro = [
   "I take computer vision from the drawing board to reliable edge deployment on the plant floor.",
-  "I am an AI engineer specialising in industrial AI solutions, and a data scientist. I build end-to-end vision systems, from fine-tuning detection and violation models to optimising real-time inference on Linux edge environments.",
-  "My work in industrial safety and quality inspection spans 10+ plant environments. I have architected systems handling 50+ camera streams and taken projects from on-site pain-point analysis all the way to production, using RTSP streaming, custom vision pipelines, industrial networking and close collaboration with clients.",
-  "Beyond engineering, I mentor. I run online and in-person bootcamps and workshops that bridge the gap between academic curricula and the practical demands of modern industry.",
-  "I am always sharpening my skills in scaling vision pipelines, edge optimisation and hardware and software integration. If you are building the future of computer vision, edge AI or industrial automation, let's talk.",
+  "I am an **AI engineer** specialising in **industrial AI solutions**, and a **data scientist**. I build end-to-end vision systems, from fine-tuning detection and violation models to optimising real-time inference on **Linux edge environments**.",
+  "My work in industrial safety and quality inspection spans **10+ plant environments**. I have architected systems handling **50+ camera streams** and taken projects from **on-site pain-point analysis all the way to production**, using RTSP streaming, custom vision pipelines, industrial networking and close collaboration with clients.",
+  "Beyond engineering, **I mentor**. I run **online and in-person bootcamps and workshops** that bridge the gap between academic curricula and the practical demands of modern industry.",
+  "I am always sharpening my skills in scaling vision pipelines, edge optimisation and hardware and software integration. If you are building the future of **computer vision, edge AI or industrial automation**, let's talk.",
 ];
+
+function Rich({ text }: { text: string }) {
+  return (
+    <>
+      {text.split("**").map((part, i) =>
+        i % 2 ? (
+          <strong key={i} className="font-bold text-fg">
+            {part}
+          </strong>
+        ) : (
+          part
+        ),
+      )}
+    </>
+  );
+}
 function Tile({
   h,
   big = false,
@@ -92,8 +116,8 @@ export default function AboutPage() {
   return (
     <>
       <Container className="rise pb-4 pt-8 md:pt-12">
-        <div className="relative overflow-hidden rounded-[32px] bg-alt md:h-[580px]">
-          <div className="relative h-[430px] md:absolute md:inset-y-0 md:right-0 md:h-auto md:w-1/2">
+        <div className="relative overflow-hidden rounded-[32px] bg-alt md:h-[400px]">
+          <div className="relative h-[340px] md:absolute md:inset-y-0 md:right-0 md:h-auto md:w-1/2">
             <div
               aria-hidden="true"
               className="absolute bottom-[10%] left-1/2 aspect-square w-[85%] -translate-x-1/2 rounded-full bg-accent/20 blur-3xl"
@@ -136,22 +160,30 @@ export default function AboutPage() {
         </ul>
       </Container>
 
-      <Container className="max-w-[820px] pb-16 pt-10">
-        <h1 className="text-5xl font-bold leading-[1.05] tracking-tight md:text-6xl">
-          About me
-        </h1>
-        <p className="mt-6 text-2xl font-medium leading-snug tracking-tight">
-          {intro[0]}
-        </p>
-        <div className="mt-4 space-y-3 text-xl leading-relaxed text-muted">
-          {intro.slice(1).map((t) => (
-            <p key={t}>{t}</p>
-          ))}
-        </div>
-        <div className="mt-8 flex flex-wrap items-center gap-4">
-          <Buttons />
-        </div>
-      </Container>
+      <section className="bg-alt py-10 font-[family-name:var(--font-roboto)]">
+        <Container>
+          <div className="rounded-[28px] bg-card p-8 md:p-14">
+            <div className="max-w-[820px]">
+              <h1 className="text-3xl font-bold leading-[1.15] tracking-[-0.01em] md:text-4xl">
+                About me
+              </h1>
+              <p className="mt-4 text-[20px] font-semibold leading-[1.4] md:text-[22px]">
+                {intro[0]}
+              </p>
+              <div className="mt-5 space-y-4 text-[17px] leading-[1.6] text-fg">
+                {intro.slice(1).map((t) => (
+                  <p key={t}>
+                    <Rich text={t} />
+                  </p>
+                ))}
+              </div>
+              <div className="mt-8 flex flex-wrap items-center gap-4">
+                <Buttons />
+              </div>
+            </div>
+          </div>
+        </Container>
+      </section>
     </>
   );
 }

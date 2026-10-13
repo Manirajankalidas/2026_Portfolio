@@ -4,7 +4,7 @@ date: 2026-09-18
 tag: Computer Vision
 summary: A sine wave in a network graph led me to see that camera feed problems often start long before a frame reaches the model: encoding, compression, transport and decoding all shape what the AI sees.
 image: /blog/camera-stream-is-a-pipeline.webp
-link: https://www.linkedin.com/pulse/your-camera-stream-just-video-its-pipeline-Manirajan-k-4rpac/
+link: https://www.linkedin.com/pulse/your-camera-stream-just-video-its-pipeline-manirajan-k-4rpac/
 draft: false
 ---
 
