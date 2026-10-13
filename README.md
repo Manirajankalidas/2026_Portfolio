@@ -1,36 +1,98 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Manirajan: Portfolio
 
-## Getting Started
+Personal portfolio: Next.js 16, React 19, TypeScript, Tailwind CSS 4. It builds to a static
+site (no server, no database), so it deploys anywhere.
 
-First, run the development server:
+**Pages:** Home · Projects (+ detail pages) · Areas of expertise (Computer Vision, Data Science, IoT) · Blog · Events · About · Contact
+
+## Run it locally
+
+Requires Node 20 or newer (`nvm use` reads `.nvmrc`).
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm ci
+npm run dev        # http://localhost:3000
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Other commands:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+npm run build      # production build -> ./out (plain HTML)
+npm run preview    # serve ./out locally
+npm run lint
+npm run typecheck
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Edit your content
 
-## Learn More
+| What | Where |
+|---|---|
+| Name, email, LinkedIn/GitHub, nav, resume link | `src/lib/site.ts` |
+| Projects (add an entry, a page is created) | `src/content/projects.ts` |
+| Expertise topics (set `href` when you write about one) | `src/content/expertise.ts` |
+| Events | `src/content/events.ts` (photos in `public/events/`) |
+| Skills | `src/content/skills.ts` |
+| About text | `src/app/about/page.tsx` |
+| Blog posts | `content/blog/*.md`, see "Add a blog post" below |
+| Profile photo | save as `public/profile.jpg` (initials show until you do) |
+| Resume | put the PDF in `public/`, then set `resume` in `src/lib/site.ts` |
 
-To learn more about Next.js, take a look at the following resources:
+Optimise new photos before adding them: `npm run images -- <folder-with-originals> public/events`.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Add a blog post
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Create a file in `content/blog/`, for example `yolo-basics.md`. The file name becomes the address
+(`/blog/yolo-basics/`). Start it with these lines between `---` markers:
 
-## Deploy on Vercel
+- `title`: the post title
+- `date`: `YYYY-MM-DD`
+- `tag`: `Computer Vision`, `Data Science`, `IoT`, `Events and life` (or your own)
+- `summary`: one or two sentences shown on the card
+- `image`: optional. A 16:9 picture in `public/blog/`, for example `/blog/yolo-basics.webp`. It shows on the card and the post page.
+- `link`: optional. A LinkedIn (or other) article URL. The post page then shows a "Read on LinkedIn" button; write a short preview in the body.
+- `draft`: `true` hides the post on the live site (it still shows in `npm run dev`)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Then write the post in Markdown below the second `---`.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Contact form
+
+Copy `.env.example` to `.env.local` and set `NEXT_PUBLIC_WEB3FORMS_KEY` (free key from
+https://web3forms.com, which emails you the messages). Without a key, the form opens the visitor's
+email app instead. On your host, add the same variable in its environment settings.
+
+## Push to GitHub
+
+```bash
+git add .
+git commit -m "Initial portfolio"
+git remote add origin https://github.com/<you>/<repo>.git
+git push -u origin main
+```
+
+## Deploy
+
+**Vercel (recommended, free):**
+1. Go to https://vercel.com/new and import the GitHub repo.
+2. Framework preset: Next.js (detected). No build settings needed.
+3. Add environment variables: `NEXT_PUBLIC_SITE_URL` (your site address) and `NEXT_PUBLIC_WEB3FORMS_KEY`.
+4. Deploy. Every push to `main` redeploys; pull requests get preview links.
+
+**Netlify / Cloudflare Pages / GitHub Pages / any server:** build command `npm run build`, publish
+directory `out`. For GitHub Pages under a sub-path, add `basePath` in `next.config.ts`.
+
+**Custom domain:** buy one anywhere, then add it in your host's Domains settings and follow the DNS
+instructions it shows. Set `NEXT_PUBLIC_SITE_URL` to the new address afterwards.
+
+## Project layout
+
+```
+content/blog/        Markdown posts
+public/              Images and static files
+scripts/             Image optimiser
+src/app/             Pages (App Router)
+src/components/      UI components
+src/content/         Projects, expertise, events, skills data
+src/lib/             Site config and blog helpers
+```
+
+CI (`.github/workflows/ci.yml`) runs lint, typecheck and build on every push and pull request.

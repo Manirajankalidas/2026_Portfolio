@@ -1,0 +1,173 @@
+@import "tailwindcss";
+
+:root {
+  --bg: #ffffff;
+  --bg-alt: #f5f5f7;
+  --fg: #1d1d1f;
+  --muted: #6e6e73;
+  --accent: #0071e3;
+  --line: #e8e8ed;
+  --card: #ffffff;
+  --chip: #ffffff;
+  --btn: #0071e3;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #000000;
+    --bg-alt: #111113;
+    --fg: #f5f5f7;
+    --muted: #a1a1a6;
+    --accent: #2997ff;
+    --line: #2c2c2e;
+    --card: #1c1c1e;
+    --chip: #2c2c2e;
+  }
+}
+
+:root[data-theme="dark"] {
+  --bg: #000000;
+  --bg-alt: #111113;
+  --fg: #f5f5f7;
+  --muted: #a1a1a6;
+  --accent: #2997ff;
+  --line: #2c2c2e;
+  --card: #1c1c1e;
+  --chip: #2c2c2e;
+}
+
+:root[data-theme="light"] {
+  color-scheme: light;
+}
+:root[data-theme="dark"] {
+  color-scheme: dark;
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-alt: var(--bg-alt);
+  --color-fg: var(--fg);
+  --color-muted: var(--muted);
+  --color-accent: var(--accent);
+  --color-line: var(--line);
+  --color-card: var(--card);
+  --color-chip: var(--chip);
+  --color-btn: var(--btn);
+  --font-sans: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Inter", "Helvetica Neue", Arial,
+    sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Logo mark: the PNG is an alpha mask, so it takes the text color in light and dark. */
+.logo-mark {
+  display: inline-block;
+  height: 26px;
+  aspect-ratio: 417 / 321;
+  flex: none;
+  background: currentColor;
+  -webkit-mask: url("/logo-mark.png") center / contain no-repeat;
+  mask: url("/logo-mark.png") center / contain no-repeat;
+}
+
+a {
+  text-underline-offset: 3px;
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+/* gentle fade-and-rise on load */
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+.rise {
+  animation: rise 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+@media (prefers-reduced-motion: reduce) {
+  .rise {
+    animation: none;
+  }
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+/* Markdown blog content */
+.prose-lite {
+  font-size: 1.1875rem;
+  line-height: 1.7;
+}
+.prose-lite > * + * {
+  margin-top: 1.25em;
+}
+.prose-lite h2 {
+  font-size: 1.75rem;
+  line-height: 1.2;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin-top: 2em;
+}
+.prose-lite h3 {
+  font-size: 1.35rem;
+  font-weight: 700;
+  margin-top: 1.6em;
+}
+.prose-lite a {
+  color: var(--accent);
+}
+.prose-lite ul,
+.prose-lite ol {
+  padding-left: 1.4em;
+}
+.prose-lite ul {
+  list-style: disc;
+}
+.prose-lite ol {
+  list-style: decimal;
+}
+.prose-lite code {
+  background: var(--bg-alt);
+  border-radius: 6px;
+  padding: 0.15em 0.4em;
+  font-size: 0.9em;
+}
+.prose-lite pre {
+  background: var(--bg-alt);
+  border-radius: 16px;
+  padding: 1.1rem 1.25rem;
+  overflow-x: auto;
+}
+.prose-lite pre code {
+  background: none;
+  padding: 0;
+}
+.prose-lite img {
+  border-radius: 16px;
+  max-width: 100%;
+  height: auto;
+}
+.prose-lite blockquote {
+  border-left: 3px solid var(--line);
+  padding-left: 1rem;
+  color: var(--muted);
+}
