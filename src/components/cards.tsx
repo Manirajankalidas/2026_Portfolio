@@ -4,41 +4,38 @@ import type { Project } from "@/content/projects";
 import type { Area } from "@/content/expertise";
 import { eventTypeLabel, type EventItem } from "@/content/events";
 import { formatDate, type Post } from "@/lib/post";
-import { Chip, Eyebrow } from "@/components/ui";
+import { Eyebrow } from "@/components/ui";
 
 export function ProjectCard({ project }: { project: Project }) {
-  const dark = project.tone === "dark";
   return (
-    <Link
-      href={`/projects/${project.slug}`}
-      className={`group flex min-h-[420px] flex-col gap-4 overflow-hidden rounded-[28px] p-8 transition-transform hover:-translate-y-1 md:p-10 ${
-        dark ? "bg-[#1d1d1f] text-[#f5f5f7]" : "border border-line bg-card text-fg"
-      }`}
-    >
-      {project.image && (
-        <Image
-          src={project.image}
-          alt={`${project.title} in use`}
-          style={{ objectPosition: project.imagePosition ?? "30% 40%" }}
-          width={1000}
-          height={647}
-          className="-mx-8 -mt-8 mb-2 aspect-[16/10] w-[calc(100%+4rem)] max-w-none object-cover md:-mx-10 md:-mt-10 md:w-[calc(100%+5rem)]"
-        />
-      )}
-      <Eyebrow className={dark ? "text-[#a1a1a6]" : "text-muted"}>{project.eyebrow}</Eyebrow>
-      <h3 className="text-3xl font-bold leading-tight tracking-tight">{project.title}</h3>
-      <p className={`text-[17px] leading-relaxed ${dark ? "text-[#a1a1a6]" : "text-muted"}`}>
-        {project.summary}
-      </p>
-      <div className="grow" />
-      <div className="flex flex-wrap gap-2">
-        {project.tags.map((t) => (
-          <Chip key={t} dark={dark}>{t}</Chip>
-        ))}
+    <Link href={`/projects/${project.slug}`} className="group flex flex-col">
+      <div className="relative aspect-[3/2] overflow-hidden rounded-2xl bg-alt">
+        {project.image && (
+          <Image
+            src={project.image}
+            alt={`${project.title} in use`}
+            fill
+            sizes="(min-width: 640px) 454px, 100vw"
+            style={{ objectPosition: project.imagePosition ?? "30% 40%" }}
+            className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+          />
+        )}
       </div>
-      <span className={`text-[17px] ${dark ? "text-[#2997ff]" : "text-accent"} group-hover:underline`}>
-        Learn more ›
-      </span>
+      <h3 className="mt-6 text-[29px] font-bold leading-snug tracking-tight">{project.title}</h3>
+      <div className="mt-4 flex items-end justify-between gap-4">
+        <div className="min-w-0 text-[19px] leading-snug">
+          <p className="text-muted">{project.tags.join(" · ")}</p>
+          <p className="mt-0.5 font-medium text-accent">{project.eyebrow}</p>
+        </div>
+        <span
+          aria-hidden="true"
+          className="flex size-[61px] shrink-0 items-center justify-center rounded-2xl bg-btn text-white transition-transform group-hover:translate-x-0.5"
+        >
+          <svg width="27" height="27" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M9 5l7 7-7 7" />
+          </svg>
+        </span>
+      </div>
     </Link>
   );
 }
@@ -75,9 +72,7 @@ export function EventCard({ event, compact = false }: { event: EventItem; compac
         <span className="text-xl font-bold leading-snug">{event.title}</span>
         {!compact && <span className="text-[15px] leading-relaxed text-muted">{event.summary}</span>}
         {!compact && event.link && (
-          <a href={event.link} target="_blank" rel="noopener noreferrer" className="text-[15px] text-accent hover:underline">
-            LinkedIn ›
-          </a>
+          <span className="text-[15px] text-accent group-hover:underline">LinkedIn ›</span>
         )}
       </div>
     </>
@@ -86,6 +81,15 @@ export function EventCard({ event, compact = false }: { event: EventItem; compac
     <Link href="/events" className="flex flex-col overflow-hidden rounded-3xl bg-alt">
       {body}
     </Link>
+  ) : event.link ? (
+    <a
+      href={event.link}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="group flex flex-col overflow-hidden rounded-3xl bg-alt transition-transform hover:-translate-y-1"
+    >
+      {body}
+    </a>
   ) : (
     <article className="flex flex-col overflow-hidden rounded-3xl bg-alt">{body}</article>
   );

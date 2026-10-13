@@ -116,8 +116,8 @@ export default function AboutPage() {
   return (
     <>
       <Container className="rise pb-4 pt-8 md:pt-12">
-        <div className="relative overflow-hidden rounded-[32px] bg-alt md:h-[580px]">
-          <div className="relative h-[430px] md:absolute md:inset-y-0 md:right-0 md:h-auto md:w-1/2">
+        <div className="relative overflow-hidden rounded-[32px] bg-alt md:h-[400px]">
+          <div className="relative h-[340px] md:absolute md:inset-y-0 md:right-0 md:h-auto md:w-1/2">
             <div
               aria-hidden="true"
               className="absolute bottom-[10%] left-1/2 aspect-square w-[85%] -translate-x-1/2 rounded-full bg-accent/20 blur-3xl"

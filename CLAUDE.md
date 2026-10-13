@@ -16,7 +16,7 @@ folder alone unless asked.
 - Design canvas (private, owner only): https://claude.ai/artifact/Wy45kRCe1vcuTuPtVjznLx
   Boards: Home, Projects, Expertise, About, Contact, Events, Blog, Home on mobile.
 - Nav: Projects, Expertise, Blog, Events, About, Contact (button).
-- Home order: Hero, Projects, Areas of expertise, Latest writing, Events, Contact call to action.
+- Home order: Hero, Projects, Areas of Expertise, Latest writing, Events, Contact call to action.
 - Projects order: Face Recognition Attendance first, Virtual Graffiti second.
 - Expertise order: Computer Vision, Data Science, IoT (separate pages, topic cards, "Coming soon" until written).
 - Events: teaching and speaking items are highlighted; attended items are lower priority.
@@ -26,7 +26,7 @@ folder alone unless asked.
 - Title: "AI Engineer, Computer Vision | Data Scientist".
 - No education or work-experience pages or sections. No Skills section on Home or About, and no Skills page (removed at the owner's request; data kept in `src/content/skills.ts`).
 - Only two projects for now (Face Recognition Attendance System, Virtual Graffiti). More will be added later.
-- The page is called "Expertise" everywhere (not "Research"). The owner wants it to show as "Areas of expertise".
+- The page is called "Expertise" everywhere (not "Research"). The owner wants it to show as "Areas of Expertise".
 - Blog is a hobby of the owner: Markdown files in `content/blog/`.
 - No domain yet: launch on the free `*.vercel.app` address.
 - Never invent metrics, claims or results. Use bracketed placeholders or omit.
