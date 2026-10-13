@@ -51,7 +51,7 @@ export const events: EventItem[] = [
     title: "Smart Bharat Expo",
     year: 2024,
     place: "Bangalore",
-    type: "speaking",
+    type: "exhibited",
     summary: "Shared insights on smart technology adoption in India.",
     image: "/events/smartbharat-2024.webp",
     link: "https://www.linkedin.com/posts/Manirajan-k_smartbharat-indiaelectronicsweek-iew-activity-7160255182298058752-CQ-B",
