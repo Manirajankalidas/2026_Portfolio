@@ -9,31 +9,38 @@ import { site } from "@/lib/site";
 
 export default function Home() {
   const posts = getPosts().slice(0, 3);
-  const highlights = events.filter((e) => e.type === "speaking" || e.type === "teaching").slice(0, 3);
+  const highlights = events
+    .filter((e) => e.type === "speaking" || e.type === "teaching")
+    .slice(0, 3);
 
   return (
     <>
       {/* Hero */}
       <Container className="flex flex-wrap items-center justify-center min-h-[calc(100svh-68px)] gap-12 py-10">
         <div className="rise min-w-0 flex-[1_1_440px]">
-          <p className="mb-4 text-xl font-semibold text-muted">Hi, I&apos;m Manirajan.</p>
+          <p className="mb-4 text-xl font-semibold text-muted">
+            Hi, I&apos;m Manirajan.
+          </p>
           <h1 className="text-5xl font-bold leading-[1.05] tracking-tight sm:text-6xl md:text-7xl">
             AI Engineer <span className="text-accent">|</span>
             <br />
             Data Scientist
           </h1>
           <p className="mt-6 max-w-xl text-2xl font-semibold leading-snug tracking-tight">
-            Building intelligent systems. Leading innovative ideas. Creating real-world impact.
+            Building intelligent systems. Leading innovative ideas. Creating
+            real-world impact.
           </p>
           <p className="mt-4 max-w-xl text-base leading-relaxed text-muted md:text-[17px]">
-            I develop practical AI solutions, drive ideas from concept to deployment, and believe
-            that great engineering is built through curiosity, collaboration, and purposeful
-            leadership.
+            I develop practical AI solutions, drive ideas from concept to
+            deployment, and believe that great engineering is built through
+            curiosity, collaboration, and purposeful leadership.
           </p>
           <div className="mt-8 flex flex-wrap items-center gap-4">
             <ButtonLink href="/contact">Contact me</ButtonLink>
             {site.resume && (
-              <ButtonLink href={site.resume} variant="text" external>Resume ›</ButtonLink>
+              <ButtonLink href={site.resume} variant="text" external>
+                Resume ›
+              </ButtonLink>
             )}
           </div>
           <dl className="mt-10 flex flex-wrap gap-x-10 gap-y-4 border-t border-line pt-6">
@@ -57,7 +64,12 @@ export default function Home() {
       {/* Projects */}
       <section className="bg-alt py-16">
         <Container>
-          <SectionTitle title="Engineering in Action" href="/projects" linkLabel="All projects" intro="More coming soon." />
+          <SectionTitle
+            title="Engineering Ideas into Reality."
+            href="/projects"
+            linkLabel="All projects"
+            intro="Every project begins with a real-world problem. I turn ideas into practical solutions through experimentation, engineering, and hands-on implementation—from computer vision models to production-ready applications."
+          />
           <div className="grid gap-x-6 gap-y-12 sm:grid-cols-[repeat(auto-fill,minmax(min(100%,454px),454px))]">
             {projects.map((p) => (
               <ProjectCard key={p.slug} project={p} />
@@ -69,7 +81,10 @@ export default function Home() {
       {/* Expertise */}
       <section className="py-16">
         <Container>
-          <SectionTitle title="Areas of Expertise" />
+          <SectionTitle
+            title="Intelligence Across Domains."
+            intro="From computer vision and data science to IoT and edge computing, I combine AI, statistical thinking, and connected technologies to build intelligent systems that solve real-world challenges."
+          />
           <div className="grid gap-6 md:grid-cols-3">
             {areas.map((a) => (
               <AreaCard key={a.slug} area={a} />
@@ -82,7 +97,12 @@ export default function Home() {
       {posts.length > 0 && (
         <section className="bg-alt py-16">
           <Container>
-            <SectionTitle title="Latest writing" href="/blog" linkLabel="All posts" />
+            <SectionTitle
+              title="Lessons from the Field."
+              href="/blog"
+              linkLabel="All posts"
+              intro="Real deployments, unexpected failures, and engineering breakthroughs shape the way I work. I document technical challenges, share practical insights, and turn lessons learned into knowledge others can build on."
+            />
             <div className="grid gap-5 md:grid-cols-3">
               {posts.map((p) => (
                 <PostCard key={p.slug} post={p} />
@@ -96,10 +116,10 @@ export default function Home() {
       <section className="py-16">
         <Container>
           <SectionTitle
-            title="Events"
+            title="Sharing Knowledge. Building Together."
             href="/events"
             linkLabel="All events"
-            intro="Workshops taught, expos exhibited, communities joined."
+            intro="Through technical workshops, industry events, and community engagement, I share knowledge, mentor aspiring engineers, and help bridge the gap between academic learning and practical engineering."
           />
           <div className="grid gap-5 md:grid-cols-3">
             {highlights.map((e) => (
