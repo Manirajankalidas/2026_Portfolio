@@ -89,7 +89,7 @@ export default async function ProjectPage({ params }: Props) {
 
       {project.why && (
         <section className={section}>
-          <h2 className={h2}>The problem</h2>
+          <h2 className={h2}>{project.whyTitle ?? "The problem"}</h2>
           <div className="mt-8 grid gap-5 md:grid-cols-3">
             {project.why.map((w) => (
               <div key={w.title} className="rounded-3xl bg-alt p-7">
