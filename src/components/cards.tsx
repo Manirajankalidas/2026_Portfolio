@@ -6,7 +6,13 @@ import { eventTypeLabel, type EventItem } from "@/content/events";
 import { formatDate, type Post } from "@/lib/post";
 import { Eyebrow } from "@/components/ui";
 
-export function ProjectCard({ project }: { project: Project }) {
+export function ProjectCard({
+  project,
+  priority = false,
+}: {
+  project: Project;
+  priority?: boolean;
+}) {
   return (
     <Link href={`/projects/${project.slug}`} className="group flex flex-col">
       <div className="relative aspect-[3/2] overflow-hidden rounded-2xl bg-alt">
@@ -15,13 +21,16 @@ export function ProjectCard({ project }: { project: Project }) {
             src={project.image}
             alt={`${project.title} in use`}
             fill
+            priority={priority}
             sizes="(min-width: 640px) 454px, 100vw"
             style={{ objectPosition: project.imagePosition ?? "30% 40%" }}
             className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
           />
         )}
       </div>
-      <h3 className="mt-6 text-[29px] font-bold leading-snug tracking-tight">{project.title}</h3>
+      <h3 className="mt-6 text-[29px] font-bold leading-snug tracking-tight">
+        {project.title}
+      </h3>
       <div className="mt-4 flex items-end justify-between gap-4">
         <div className="min-w-0 text-[19px] leading-snug">
           <p className="text-muted">{project.tags.join(" · ")}</p>
@@ -31,7 +40,16 @@ export function ProjectCard({ project }: { project: Project }) {
           aria-hidden="true"
           className="flex size-[61px] shrink-0 items-center justify-center rounded-2xl bg-btn text-white transition-transform group-hover:translate-x-0.5"
         >
-          <svg width="27" height="27" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+          <svg
+            width="27"
+            height="27"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2.5"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          >
             <path d="M9 5l7 7-7 7" />
           </svg>
         </span>
@@ -47,14 +65,22 @@ export function AreaCard({ area }: { area: Area }) {
       className="flex min-h-[220px] flex-col gap-2.5 rounded-3xl bg-alt p-8 transition-transform hover:-translate-y-1"
     >
       <span className="text-2xl font-bold">{area.title}</span>
-      <span className="text-[17px] leading-relaxed text-muted">{area.summary}</span>
+      <span className="text-[17px] leading-relaxed text-muted">
+        {area.summary}
+      </span>
       <span className="grow" />
       <span className="text-[17px] text-accent">Explore ›</span>
     </Link>
   );
 }
 
-export function EventCard({ event, compact = false }: { event: EventItem; compact?: boolean }) {
+export function EventCard({
+  event,
+  compact = false,
+}: {
+  event: EventItem;
+  compact?: boolean;
+}) {
   const highlight = event.type === "teaching" || event.type === "speaking";
   const body = (
     <>
@@ -70,15 +96,24 @@ export function EventCard({ event, compact = false }: { event: EventItem; compac
           {eventTypeLabel[event.type]} · {event.place}
         </Eyebrow>
         <span className="text-xl font-bold leading-snug">{event.title}</span>
-        {!compact && <span className="text-[15px] leading-relaxed text-muted">{event.summary}</span>}
+        {!compact && (
+          <span className="text-[15px] leading-relaxed text-muted">
+            {event.summary}
+          </span>
+        )}
         {!compact && event.link && (
-          <span className="text-[15px] text-accent group-hover:underline">LinkedIn ›</span>
+          <span className="text-[15px] text-accent group-hover:underline">
+            LinkedIn ›
+          </span>
         )}
       </div>
     </>
   );
   return compact ? (
-    <Link href="/events" className="flex flex-col overflow-hidden rounded-3xl bg-alt">
+    <Link
+      href="/events"
+      className="flex flex-col overflow-hidden rounded-3xl bg-alt"
+    >
       {body}
     </Link>
   ) : event.link ? (
@@ -91,7 +126,9 @@ export function EventCard({ event, compact = false }: { event: EventItem; compac
       {body}
     </a>
   ) : (
-    <article className="flex flex-col overflow-hidden rounded-3xl bg-alt">{body}</article>
+    <article className="flex flex-col overflow-hidden rounded-3xl bg-alt">
+      {body}
+    </article>
   );
 }
 
@@ -111,13 +148,19 @@ export function PostCard({ post }: { post: Post }) {
       )}
       <Eyebrow>{post.tag}</Eyebrow>
       <span className="text-xl font-bold leading-snug">{post.title}</span>
-      {post.summary && <span className="text-[15px] leading-relaxed text-muted">{post.summary}</span>}
+      {post.summary && (
+        <span className="text-[15px] leading-relaxed text-muted">
+          {post.summary}
+        </span>
+      )}
       <span className="grow" />
       <span className="mt-1 text-[15px] text-muted">
         {formatDate(post.date)}
         {post.link ? "" : ` · ${post.minutes} min read`}
       </span>
-      {post.link && <span className="text-[15px] text-accent">Read more ›</span>}
+      {post.link && (
+        <span className="text-[15px] text-accent">Read more ›</span>
+      )}
     </>
   );
   return (

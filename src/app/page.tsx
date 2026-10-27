@@ -1,4 +1,5 @@
-import { AreaCard, EventCard, PostCard, ProjectCard } from "@/components/cards";
+import AreaBand from "@/components/AreaBand";
+import { EventCard, PostCard, ProjectCard } from "@/components/cards";
 import ProfilePhoto from "@/components/ProfilePhoto";
 import { ButtonLink, Container, SectionTitle } from "@/components/ui";
 import { areas } from "@/content/expertise";
@@ -79,18 +80,16 @@ export default function Home() {
       </section>
 
       {/* Expertise */}
-      <section className="py-16">
+      <section className="pt-16">
         <Container>
           <SectionTitle
             title="Intelligence Across Domains."
             intro="From computer vision and data science to IoT and edge computing, I combine AI, statistical thinking, and connected technologies to build intelligent systems that solve real-world challenges."
           />
-          <div className="grid gap-6 md:grid-cols-3">
-            {areas.map((a) => (
-              <AreaCard key={a.slug} area={a} />
-            ))}
-          </div>
         </Container>
+        {areas.map((a, i) => (
+          <AreaBand key={a.slug} area={a} index={i} />
+        ))}
       </section>
 
       {/* Blog */}
