@@ -1,11 +1,13 @@
 // Each topic is shown as a card. When you write about it, set `href` (for example
 // to a blog post) and the "Coming soon" label turns into a link.
 // `clip` is a file name (without extension) in public/cv/: <clip>.mp4 plays, <clip>.webp is the poster.
+// `appsLabel` replaces the "Suggested applications" heading above the `apps` chips.
 export type Topic = {
   name: string;
   tagline?: string;
   summary?: string;
   apps?: string[];
+  appsLabel?: string;
   href?: string;
   clip?: string;
 };
@@ -93,6 +95,23 @@ export const areas: Area[] = [
           "Contour analysis",
         ],
         clip: "image-processing",
+      },
+      {
+        name: "Model Optimisation & Deployment",
+        tagline: "Faster Inference. Smarter Deployment.",
+        summary:
+          "Optimising deep learning models for high-performance inference and real-world deployment. Converting trained models into ONNX and NVIDIA TensorRT engine formats, applying FP32, FP16 and INT8 precision optimisation, and benchmarking performance across GPU and edge devices.",
+        appsLabel: "Key technologies",
+        apps: [
+          "ONNX",
+          "NVIDIA TensorRT",
+          "FP32 / FP16 / INT8",
+          "PyTorch",
+          "Ultralytics YOLO",
+          "CUDA",
+          "NVIDIA Jetson",
+        ],
+        clip: "optimisation",
       },
     ],
   },

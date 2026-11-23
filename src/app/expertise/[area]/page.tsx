@@ -154,7 +154,7 @@ export default async function AreaPage({ params }: Props) {
                       <p
                         className={`text-xs font-semibold uppercase tracking-wider ${band.muted}`}
                       >
-                        Suggested applications
+                        {t.appsLabel ?? "Suggested applications"}
                       </p>
                       <ul className="mt-3 flex flex-wrap gap-2">
                         {t.apps.map((app) => (
