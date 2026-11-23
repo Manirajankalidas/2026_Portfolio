@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import AutoVideo from "@/components/AutoVideo";
+import { PhotoCredit } from "@/components/expertise";
 import { Container } from "@/components/ui";
 import type { Area } from "@/content/expertise";
 
@@ -23,30 +24,33 @@ export default function AreaBand({
           flip ? "lg:grid-cols-[1fr_1.5fr]" : "lg:grid-cols-[1.5fr_1fr]"
         }`}
       >
-        <Link
-          href={`/expertise/${area.slug}`}
-          aria-label={`${area.title}: explore`}
-          className={`block overflow-hidden rounded-3xl bg-black ${flip ? "lg:order-2" : ""}`}
-        >
-          {media?.clip ? (
-            <AutoVideo
-              src={`/cv/${media.clip}.mp4`}
-              poster={`/cv/${media.clip}.webp`}
-              label={`${area.title} sample`}
-              className="aspect-video w-full object-cover"
-            />
-          ) : (
-            media?.image && (
-              <Image
-                src={media.image}
-                alt={`${area.title} illustration`}
-                width={1000}
-                height={563}
-                className={`aspect-video w-full ${media.wide ? "bg-white object-contain" : "object-cover"}`}
+        <div className={flip ? "lg:order-2" : ""}>
+          <Link
+            href={`/expertise/${area.slug}`}
+            aria-label={`${area.title}: explore`}
+            className="block overflow-hidden rounded-3xl bg-black"
+          >
+            {media?.clip ? (
+              <AutoVideo
+                src={`/cv/${media.clip}.mp4`}
+                poster={`/cv/${media.clip}.webp`}
+                label={`${area.title} sample`}
+                className="aspect-video w-full object-cover"
               />
-            )
-          )}
-        </Link>
+            ) : (
+              media?.image && (
+                <Image
+                  src={media.image}
+                  alt={`${area.title} illustration`}
+                  width={1000}
+                  height={563}
+                  className={`aspect-video w-full ${media.wide ? "bg-white object-contain" : "object-cover"}`}
+                />
+              )
+            )}
+          </Link>
+          {media?.image && <PhotoCredit src={media.image} className="mt-2" />}
+        </div>
         <div>
           <p className="text-xs font-semibold uppercase tracking-wider text-accent">
             0{index + 1}

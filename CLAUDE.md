@@ -19,9 +19,11 @@ folder alone unless asked.
 - Home order: Hero, Projects, Areas of Expertise, Latest writing, Events, Contact call to action.
 - Projects order: Face Recognition Attendance first, Virtual Graffiti second.
 - Expertise order: Computer Vision, Data Science, Edge AI & Embedded Systems (was "IoT"; slug `edge-ai-embedded-systems`, old
-  `/expertise/iot` redirected in `vercel.json`). Edge AI topics have detail pages at
-  `/expertise/edge-ai-embedded-systems/<slug>`; hardware photos are Wikimedia Commons, credited via
-  `src/content/photo-credits.ts`. Keep the Computer Vision page unchanged unless asked.
+  `/expertise/iot` redirected in `vercel.json`). No sub-pages per topic (removed at the owner's
+  request). Hardware photos are Wikimedia Commons; their licences need the small "Photo:" credit lines
+  (data in `src/content/photo-credits.ts`), so keep them. Owner-supplied product photos are cut out
+  to transparent WebP with `python3 scripts/cutout.py <in> <out> [--flat] [--tol N] [--trim N]
+  [--holes] [--shadow]` (needs numpy) and marked `cutout: true` so they show without a frame. Keep the Computer Vision page unchanged unless asked.
 - Events: teaching and speaking items are highlighted; attended items are lower priority.
 
 ## Decisions from the owner

@@ -2,10 +2,15 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { PhotoCredit, Pills, TopicMedia, topicBands, topicNumber, topicPills } from "@/components/expertise";
+import {
+  PhotoCredit,
+  Pills,
+  TopicMedia,
+  topicBands,
+  topicNumber,
+} from "@/components/expertise";
 import { Container, PageHeader } from "@/components/ui";
-import { areas, type Topic } from "@/content/expertise";
-import { photoCredits } from "@/content/photo-credits";
+import { areas } from "@/content/expertise";
 
 type Props = { params: Promise<{ area: string }> };
 
@@ -16,7 +21,7 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { area } = await params;
   const found = areas.find((a) => a.slug === area);
-  return found ? { title: found.title, description: found.intro ?? found.summary } : {};
+  return found ? { title: found.title, description: found.summary } : {};
 }
 
 export default async function AreaPage({ params }: Props) {
@@ -27,10 +32,7 @@ export default async function AreaPage({ params }: Props) {
   const withMedia = found.topics.some((t) => t.clip || t.image);
 
   if (withMedia) {
-    const topicHref = (t: Topic) => (t.slug ? `/expertise/${found.slug}/${t.slug}` : undefined);
-    const usesCreditedPhotos = [found.banner, ...found.topics.map((t) => t.image)].some(
-      (src) => src && photoCredits[src],
-    );
+    const longTitle = found.title.length > 20;
 
     return (
       <>
@@ -56,114 +58,100 @@ export default async function AreaPage({ params }: Props) {
             >
               ‹ Areas of Expertise
             </Link>
-            <div className="rise my-auto max-w-xl py-10">
-              <h1 className="text-balance text-5xl font-bold leading-[1.05] tracking-tight md:text-7xl">
+            {/* Long titles get a smaller size and wider box so they stay on one line like "Computer Vision". */}
+            <div
+              className={`rise my-auto py-10 ${longTitle ? "max-w-4xl" : "max-w-xl"}`}
+            >
+              <h1
+                className={`text-balance font-bold leading-[1.05] tracking-tight ${
+                  longTitle ? "text-4xl md:text-6xl" : "text-5xl md:text-7xl"
+                }`}
+              >
                 {found.title}
               </h1>
-              {found.tagline && (
-                <p className="mt-4 text-xl font-semibold leading-snug md:text-2xl">{found.tagline}</p>
-              )}
-              {found.intro && (
-                <p className="mt-4 text-[17px] leading-relaxed text-white/80">{found.intro}</p>
-              )}
-              <ul className="mt-6 flex flex-wrap gap-2">
-                {found.topics.map((t) => {
-                  const href = topicHref(t);
-                  const chip = "rounded-full bg-white/15 px-3.5 py-1.5 text-[15px] backdrop-blur";
-                  return (
-                    <li key={t.name} className={href ? "" : chip}>
-                      {href ? (
-                        <Link href={href} className={`${chip} inline-block transition-colors hover:bg-white/25`}>
-                          {t.name}
-                        </Link>
-                      ) : (
-                        t.name
-                      )}
-                    </li>
-                  );
-                })}
+              <ul
+                className={`mt-6 flex flex-wrap gap-2 ${longTitle ? "max-w-2xl" : ""}`}
+              >
+                {found.topics.map((t) => (
+                  <li
+                    key={t.name}
+                    className="rounded-full bg-white/15 px-3.5 py-1.5 text-[15px] backdrop-blur"
+                  >
+                    {t.name}
+                  </li>
+                ))}
               </ul>
             </div>
           </Container>
+          {found.banner && (
+            <PhotoCredit
+              src={found.banner}
+              tone="text-white/60"
+              className="absolute bottom-3 right-4 text-[11px]"
+            />
+          )}
         </section>
 
         {found.topics.map((t, i) => {
           const band = topicBands[i % topicBands.length];
-          const href = topicHref(t);
-          const pills = topicPills(t);
-          const content = (
-            <Container
-              className={`grid max-w-[1240px] items-center gap-8 lg:gap-14 ${
-                i % 2 ? "lg:grid-cols-[1fr_1.5fr]" : "lg:grid-cols-[1.5fr_1fr]"
-              }`}
-            >
-              <TopicMedia topic={t} frame={band.frame} className={i % 2 ? "lg:order-2" : ""} />
-              <div>
-                <p className={`text-xs font-semibold uppercase tracking-wider ${band.eyebrow}`}>
-                  {topicNumber(i)} — {t.name}
-                </p>
-                <h2 className="mt-2 text-3xl font-bold tracking-tight md:text-5xl">{t.name}</h2>
-                {t.tagline && (
-                  <p className="mt-3 text-xl font-semibold leading-snug md:text-2xl">{t.tagline}</p>
-                )}
-                {t.summary && (
-                  <p className={`mt-4 max-w-xl text-[17px] leading-relaxed ${band.muted}`}>{t.summary}</p>
-                )}
-                {pills.length > 0 && (
-                  <div className="mt-6">
-                    <p className={`text-xs font-semibold uppercase tracking-wider ${band.muted}`}>
-                      {t.appsLabel ?? "Suggested applications"}
+          return (
+            <section key={t.name} className={`${band.bg} py-16 md:py-20`}>
+              <Container
+                className={`grid max-w-[1240px] items-center gap-8 lg:gap-14 ${
+                  i % 2
+                    ? "lg:grid-cols-[1fr_1.5fr]"
+                    : "lg:grid-cols-[1.5fr_1fr]"
+                }`}
+              >
+                <TopicMedia
+                  topic={t}
+                  frame={band.frame}
+                  className={i % 2 ? "lg:order-2" : ""}
+                />
+                <div>
+                  <p
+                    className={`text-xs font-semibold uppercase tracking-wider ${band.eyebrow}`}
+                  >
+                    {topicNumber(i)} — {t.name}
+                  </p>
+                  <h2 className="mt-2 text-3xl font-bold tracking-tight md:text-5xl">
+                    {t.name}
+                  </h2>
+                  {t.tagline && (
+                    <p className="mt-3 text-xl font-semibold leading-snug md:text-2xl">
+                      {t.tagline}
                     </p>
-                    <Pills items={pills} />
-                  </div>
-                )}
-                {href ? (
-                  <span className="mt-6 inline-flex items-center gap-1 text-[17px] text-accent">
-                    Explore {t.name}
-                    <span aria-hidden="true" className="transition-transform motion-safe:group-hover:translate-x-1">
-                      ›
-                    </span>
-                  </span>
-                ) : (
-                  t.href && (
+                  )}
+                  {t.summary && (
+                    <p
+                      className={`mt-4 max-w-xl text-[17px] leading-relaxed ${band.muted}`}
+                    >
+                      {t.summary}
+                    </p>
+                  )}
+                  {t.apps && (
+                    <div className="mt-6">
+                      <p
+                        className={`text-xs font-semibold uppercase tracking-wider ${band.muted}`}
+                      >
+                        {t.appsLabel ?? "Suggested applications"}
+                      </p>
+                      <Pills items={t.apps} />
+                    </div>
+                  )}
+                  {t.href && (
                     <Link
                       href={t.href}
                       className="mt-5 inline-block text-[17px] underline-offset-4 hover:underline"
                     >
                       Read ›
                     </Link>
-                  )
-                )}
-              </div>
-            </Container>
-          );
-
-          return (
-            <section key={t.name} className={`${band.bg} py-16 md:py-20`}>
-              {href ? (
-                <Link
-                  href={href}
-                  aria-label={`${t.name}: explore hardware and experience`}
-                  className="group block focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-4"
-                >
-                  {content}
-                </Link>
-              ) : (
-                content
-              )}
+                  )}
+                </div>
+              </Container>
             </section>
           );
         })}
-
-        {usesCreditedPhotos && (
-          <Container className="py-8">
-            <p className="text-xs text-muted">
-              Hardware photos from Wikimedia Commons contributors, used under their Creative Commons licences.
-              Each photo is credited on its topic page.
-            </p>
-            {found.banner && <PhotoCredit src={found.banner} className="mt-1" />}
-          </Container>
-        )}
       </>
     );
   }

@@ -3,7 +3,7 @@
 Personal portfolio: Next.js 16, React 19, TypeScript, Tailwind CSS 4. It builds to a static
 site (no server, no database), so it deploys anywhere.
 
-**Pages:** Home · Projects (+ detail pages) · Areas of Expertise (Computer Vision, Data Science, Edge AI & Embedded Systems, with a detail page per Edge AI topic) · Blog · Events · About · Contact
+**Pages:** Home · Projects (+ detail pages) · Areas of Expertise (Computer Vision, Data Science, Edge AI & Embedded Systems) · Blog · Events · About · Contact
 
 ## Run it locally
 
