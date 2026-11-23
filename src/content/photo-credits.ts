@@ -3,11 +3,6 @@
 export type PhotoCredit = { author: string; license: string; source: string };
 
 export const photoCredits: Record<string, PhotoCredit> = {
-  "/edge-ai/jetson-agx-orin.webp": {
-    author: "Auledas",
-    license: "CC BY 4.0",
-    source: "https://commons.wikimedia.org/wiki/File:NVidia_Jetson_Orin_AGX.png",
-  },
   // Banner: wide crop of a Jetson Orin NX photo.
   "/edge-ai/banner.webp": {
     author: "4300streetcar",

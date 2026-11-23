@@ -134,7 +134,8 @@ export const areas: Area[] = [
   {
     // Was "IoT" at /expertise/iot (redirected in vercel.json).
     slug: "edge-ai-embedded-systems",
-    media: { image: "/edge-ai/jetson-agx-orin.webp" },
+    // Slideshow of the eight topic images (scripts/make-edge-ai-clip.py).
+    media: { clip: "edge-ai" },
     banner: "/edge-ai/banner.webp",
     title: "Edge AI & Embedded Systems",
     summary:

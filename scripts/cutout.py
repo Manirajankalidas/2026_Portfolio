@@ -99,6 +99,11 @@ if args.shadow:
     rgb[use] = 0
     alpha = np.maximum(alpha, shade)
 
+# Faint edge pixels lighter than the background read as a white haze on coloured
+# sections: make them fully transparent.
+haze = (img.mean(-1) > bg.mean(-1) - 6) & (alpha < 0.6)
+alpha[haze] = 0
+
 out = Image.fromarray(np.dstack([rgb, alpha * 255]).clip(0, 255).astype(np.uint8), "RGBA")
 
 # 4) Trim to the visible product and centre it on a 16:9 transparent canvas.
