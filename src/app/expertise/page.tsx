@@ -6,7 +6,7 @@ import { areas } from "@/content/expertise";
 export const metadata: Metadata = {
   title: "Areas of Expertise",
   description:
-    "Computer vision, data science and IoT: topics Manirajan works on.",
+    "Computer vision, data science, and edge AI and embedded systems: topics Manirajan works on.",
 };
 
 export default function ExpertisePage() {

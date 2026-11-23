@@ -18,7 +18,10 @@ folder alone unless asked.
 - Nav: Projects, Expertise, Blog, Events, About, Contact (button).
 - Home order: Hero, Projects, Areas of Expertise, Latest writing, Events, Contact call to action.
 - Projects order: Face Recognition Attendance first, Virtual Graffiti second.
-- Expertise order: Computer Vision, Data Science, IoT (separate pages, topic cards, "Coming soon" until written).
+- Expertise order: Computer Vision, Data Science, Edge AI & Embedded Systems (was "IoT"; slug `edge-ai-embedded-systems`, old
+  `/expertise/iot` redirected in `vercel.json`). Edge AI topics have detail pages at
+  `/expertise/edge-ai-embedded-systems/<slug>`; hardware photos are Wikimedia Commons, credited via
+  `src/content/photo-credits.ts`. Keep the Computer Vision page unchanged unless asked.
 - Events: teaching and speaking items are highlighted; attended items are lower priority.
 
 ## Decisions from the owner

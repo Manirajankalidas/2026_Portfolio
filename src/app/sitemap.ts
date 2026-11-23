@@ -17,6 +17,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/contact",
     ...projects.map((p) => `/projects/${p.slug}`),
     ...areas.map((a) => `/expertise/${a.slug}`),
+    ...areas.flatMap((a) =>
+      a.topics.filter((t) => t.slug).map((t) => `/expertise/${a.slug}/${t.slug}`),
+    ),
     ...getPosts().map((p) => `/blog/${p.slug}`),
   ];
   return paths.map((p) => ({ url: `${site.url}${p}${p ? "/" : ""}` }));

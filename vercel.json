@@ -1,0 +1,6 @@
+{
+  "redirects": [
+    { "source": "/expertise/iot", "destination": "/expertise/edge-ai-embedded-systems/", "permanent": true },
+    { "source": "/expertise/iot/", "destination": "/expertise/edge-ai-embedded-systems/", "permanent": true }
+  ]
+}
