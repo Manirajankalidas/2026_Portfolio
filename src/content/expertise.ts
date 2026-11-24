@@ -87,6 +87,40 @@ export const areas: Area[] = [
         clip: "pose",
       },
       {
+        name: "Face Recognition & Analysis",
+        tagline: "Detect. Analyse. Recognise.",
+        summary:
+          "Developing face recognition solutions using computer vision and deep learning techniques for face detection, facial feature extraction, face matching and identity verification. Building intelligent vision pipelines for real-time facial analysis and recognition applications.",
+        appsLabel: "Key technologies",
+        apps: [
+          "Python",
+          "OpenCV",
+          "Dlib",
+          "PyTorch",
+          "ArcFace",
+          "Face Detection",
+          "Face Embeddings",
+          "Facial Landmarks",
+        ],
+        clip: "face-recognition",
+      },
+      {
+        name: "Optical Character Recognition (OCR)",
+        tagline: "See. Read. Extract.",
+        summary:
+          "Developing OCR solutions to extract meaningful text from images, scanned documents and video streams. Combining text detection, character recognition and image processing techniques to convert visual information into structured, machine-readable data.",
+        appsLabel: "Key technologies",
+        apps: [
+          "Python",
+          "OpenCV",
+          "Tesseract OCR",
+          "EasyOCR",
+          "PaddleOCR",
+          "Deep Learning",
+        ],
+        clip: "ocr",
+      },
+      {
         name: "Image processing",
         tagline: "Prepare images for reliable analysis.",
         summary:
