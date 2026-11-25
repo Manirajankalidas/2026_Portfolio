@@ -17,10 +17,12 @@ export default function BlogPage() {
         <BlogBrowser posts={getPosts()} />
       </Container>
       <Container className="pb-10">
-        <div className="rounded-[32px] bg-[#1d1d1f] p-10 text-center text-[#f5f5f7] md:p-12">
-          <h2 className="text-3xl font-bold tracking-tight">Follow along</h2>
-          <p className="mb-6 mt-2 text-[17px] text-[#a1a1a6]">New posts are shared on LinkedIn too.</p>
-          <ButtonLink href={site.links.linkedin} external>Follow on LinkedIn</ButtonLink>
+        <div className="rounded-[28px] bg-alt p-8 text-center">
+          <h2 className="text-xl font-semibold">Follow along</h2>
+          <p className="mt-1 text-[17px] text-muted">New posts are shared on LinkedIn too.</p>
+          <div className="mt-5">
+            <ButtonLink href={site.links.linkedin} external>Follow on LinkedIn</ButtonLink>
+          </div>
         </div>
       </Container>
     </>
