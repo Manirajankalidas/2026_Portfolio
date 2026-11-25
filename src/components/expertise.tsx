@@ -121,7 +121,7 @@ export function Pills({ items }: { items: string[] }) {
       {items.map((item) => (
         <li
           key={item}
-          className="rounded-full bg-card px-3.5 py-1.5 text-[15px] text-fg"
+          className="rounded-full border border-fg/25 bg-card px-3.5 py-1.5 text-[15px] text-fg"
         >
           {item}
         </li>
