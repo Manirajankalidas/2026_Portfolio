@@ -2,7 +2,7 @@
 title: "Beyond the Numbers: What Model Optimization on the Jetson Taught Me About Edge AI"
 date: 2026-09-12
 tag: Edge AI
-summary: Hands-on notes from optimizing a YOLO vehicle detection model on an NVIDIA Jetson edge device. Comparing PyTorch, ONNX Runtime and TensorRT showed that edge AI is about the whole pipeline, not just model accuracy or inference speed.
+summary: YOLO optimization on Jetson taught me to balance accuracy, speed, and pipeline performance using PyTorch, ONNX, and TensorRT.
 image: /blog/model-optimization-jetson-edge-ai.webp
 link: https://www.linkedin.com/pulse/beyond-numbers-what-model-optimization-jetson-taught-me-manirajan-k-ethgc/
 draft: false
