@@ -1,5 +1,6 @@
 import Image from "next/image";
 import AutoVideo from "@/components/AutoVideo";
+import TopicChart from "@/components/TopicChart";
 import type { Topic } from "@/content/expertise";
 import { photoCredits } from "@/content/photo-credits";
 
@@ -81,6 +82,9 @@ export function TopicMedia({
       />
     );
   }
+  if (topic.chart) {
+    return <TopicChart name={topic.chart} frame={frame} className={className} />;
+  }
   if (!topic.image) return null;
   if (topic.cutout) {
     // Transparent product photo: no frame, so it sits directly on the band colour.
@@ -88,7 +92,7 @@ export function TopicMedia({
       <figure className={className}>
         <Image
           src={topic.image}
-          alt={`${topic.name}: example hardware`}
+          alt={topic.imageAlt ?? `${topic.name}: example hardware`}
           width={1000}
           height={563}
           className="aspect-video w-full object-contain"
@@ -104,7 +108,7 @@ export function TopicMedia({
       >
         <Image
           src={topic.image}
-          alt={`${topic.name}: example hardware`}
+          alt={topic.imageAlt ?? `${topic.name}: example hardware`}
           width={1000}
           height={563}
           className="size-full object-cover"

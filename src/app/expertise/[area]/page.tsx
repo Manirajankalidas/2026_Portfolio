@@ -9,6 +9,7 @@ import {
   topicBands,
   topicNumber,
 } from "@/components/expertise";
+import SectionNav from "@/components/SectionNav";
 import { Container, PageHeader } from "@/components/ui";
 import { areas } from "@/content/expertise";
 
@@ -21,7 +22,11 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { area } = await params;
   const found = areas.find((a) => a.slug === area);
-  return found ? { title: found.title, description: found.summary } : {};
+  if (!found) return {};
+  return {
+    title: found.metaTitle ?? found.title,
+    description: found.metaDescription ?? found.summary,
+  };
 }
 
 export default async function AreaPage({ params }: Props) {
@@ -29,10 +34,16 @@ export default async function AreaPage({ params }: Props) {
   const found = areas.find((a) => a.slug === area);
   if (!found) notFound();
 
-  const withMedia = found.topics.some((t) => t.clip || t.image);
+  const withMedia = found.topics.some((t) => t.clip || t.image || t.chart);
 
   if (withMedia) {
     const longTitle = found.title.length > 20;
+    const sections = found.topics.flatMap((t) =>
+      t.id ? [{ id: t.id, label: t.navLabel ?? t.name }] : [],
+    );
+    const hasNav = sections.length > 0;
+    // Clear the main nav and the section nav when jumping to a section.
+    const anchor = hasNav ? "scroll-mt-[120px] " : "";
 
     return (
       <>
@@ -77,7 +88,7 @@ export default async function AreaPage({ params }: Props) {
                     key={t.name}
                     className="rounded-full bg-white/15 px-3.5 py-1.5 text-[15px] backdrop-blur"
                   >
-                    {t.name}
+                    {t.id ? <a href={`#${t.id}`}>{t.name}</a> : t.name}
                   </li>
                 ))}
               </ul>
@@ -92,10 +103,16 @@ export default async function AreaPage({ params }: Props) {
           )}
         </section>
 
+        {hasNav && <SectionNav items={sections} />}
+
         {found.topics.map((t, i) => {
           const band = topicBands[i % topicBands.length];
           return (
-            <section key={t.name} className={`${band.bg} py-16 md:py-20`}>
+            <section
+              key={t.name}
+              id={t.id}
+              className={`${anchor}${band.bg} py-16 md:py-20`}
+            >
               <Container
                 className={`grid max-w-[1240px] items-center gap-8 lg:gap-14 ${
                   i % 2

@@ -24,6 +24,9 @@ folder alone unless asked.
   (data in `src/content/photo-credits.ts`), so keep them. Owner-supplied product photos are cut out
   to transparent WebP with `python3 scripts/cutout.py <in> <out> [--flat] [--tol N] [--trim N]
   [--holes] [--shadow]` (needs numpy) and marked `cutout: true` so they show without a frame. Keep the Computer Vision page unchanged unless asked.
+- Data Science page: six topics with SVG charts in `src/components/TopicChart.tsx` (synthetic data, keep the
+  "Illustrative" captions), sticky `SectionNav`. No Technologies or Featured
+  project sections (removed at the owner's request).
 - Events: teaching and speaking items are highlighted; attended items are lower priority.
 
 ## Decisions from the owner

@@ -1,3 +1,5 @@
+import type { ChartName } from "@/components/TopicChart";
+
 // Each topic is shown as a card. When you write about it, set `href` (for example
 // to a blog post) and the "Coming soon" label turns into a link.
 // `clip` is a file name (without extension) in public/cv/: <clip>.mp4 plays, <clip>.webp is the poster.
@@ -13,6 +15,10 @@ export type Topic = {
   href?: string;
   clip?: string;
   image?: string;
+  chart?: ChartName; // drawn illustration (src/components/TopicChart.tsx) instead of a clip or image
+  id?: string; // anchor; areas whose topics have ids get the in-page section navigation
+  navLabel?: string; // shorter name for that navigation
+  imageAlt?: string;
   cutout?: boolean; // `image` has a transparent background: show it without the rounded frame
 };
 export type Area = {
@@ -21,6 +27,8 @@ export type Area = {
   summary: string;
   topics: Topic[];
   banner?: string;
+  metaTitle?: string;
+  metaDescription?: string;
   // Picture shown on the Home and Expertise pages: a clip in public/cv/, or an image path. `wide` = keep the whole picture.
   media?: { clip?: string; image?: string; wide?: boolean };
 };
@@ -157,12 +165,116 @@ export const areas: Area[] = [
     slug: "data-science",
     media: { image: "/home/data-science.webp", wide: true },
     title: "Data Science",
-    summary: "EDA, pre-processing, cleaning and modelling.",
+    summary:
+      "Visualization, machine learning, exploratory analysis, time series and statistics.",
+    metaTitle: "Data Science & Analytics",
+    metaDescription:
+      "Explore data science expertise in statistical analysis, machine learning, exploratory data analysis, time series and business intelligence.",
+    banner: "/ds/banner.webp",
     topics: [
-      { name: "EDA" },
-      { name: "Pre-processing" },
-      { name: "Data cleaning" },
-      { name: "Modelling" },
+      {
+        id: "data-visualization",
+        name: "Data Visualization & Business Intelligence",
+        navLabel: "Visualization & BI",
+        tagline: "Transform complex data into meaningful insights.",
+        summary:
+          "Transform complex datasets into interactive dashboards and visual insights that support informed business decisions.",
+        image: "/ds/dashboard.webp",
+        imageAlt:
+          "Manufacturing dashboard with cost by month, cost split and cost by work center, machine and item",
+        appsLabel: "Applications & Technologies",
+        apps: [
+          "Tableau Dashboards",
+          "R-based Data Visualization & Dashboards",
+          "Python-based Dashboards",
+          "Interactive Charts & Graphs",
+          "Business Intelligence Reporting",
+          "Data Storytelling",
+        ],
+      },
+      {
+        id: "machine-learning",
+        name: "Machine Learning",
+        tagline: "Transform data into predictive intelligence.",
+        summary:
+          "Develop predictive models using supervised and unsupervised learning techniques to identify patterns and solve real-world problems.",
+        chart: "ml",
+        appsLabel: "Applications & Technologies",
+        apps: [
+          "Classification",
+          "Regression",
+          "Clustering",
+          "Model Training & Evaluation",
+          "Performance Metrics",
+          "Feature Engineering",
+        ],
+      },
+      {
+        id: "eda",
+        name: "Exploratory Data Analysis (EDA)",
+        navLabel: "EDA",
+        tagline: "Discover patterns hidden within data.",
+        summary:
+          "Explore datasets, identify patterns, detect anomalies and uncover meaningful insights through statistical analysis and visualization.",
+        image: "/ds/eda.webp",
+        imageAlt:
+          "Exploratory plots of a penguin dataset: hexbin joint plots, swarm plot, scatter plots, regression lines and a pair plot",
+        appsLabel: "Applications & Techniques",
+        apps: [
+          "Data Exploration & Profiling",
+          "Data Cleaning",
+          "Data Preprocessing",
+          "Statistical Summaries",
+          "Correlation Analysis",
+          "Outlier Detection",
+        ],
+      },
+      {
+        id: "data-management",
+        name: "Data Management & Processing",
+        navLabel: "Data Management",
+        tagline: "Build reliable foundations for data-driven solutions.",
+        summary:
+          "Collect, clean, transform and organize raw datasets into structured formats for efficient analysis and machine learning workflows.",
+        chart: "data",
+        appsLabel: "Applications & Technologies",
+        apps: [
+          "Data Collection & Acquisition",
+          "Data Cleaning & Preprocessing",
+          "Python-based Data Processing",
+          "Data Handling & Automation",
+        ],
+      },
+      {
+        id: "time-series",
+        name: "Time Series Analysis",
+        navLabel: "Time Series",
+        tagline: "Understand trends. Analyse patterns. Forecast the future.",
+        summary:
+          "Analyse time-dependent data to identify trends, seasonal patterns and historical behaviour while exploring forecasting techniques.",
+        chart: "time",
+        appsLabel: "Applications & Techniques",
+        apps: [
+          "Time Series Exploration",
+          "Moving Averages",
+          "Historical Data Analysis",
+          "Time Series Visualization",
+        ],
+      },
+      {
+        id: "statistical-analysis",
+        name: "Statistical Analysis",
+        tagline: "Make data-driven decisions through statistical reasoning.",
+        summary:
+          "Apply statistical methods to interpret data, test hypotheses, measure relationships and support evidence-based decision-making.",
+        chart: "stats",
+        appsLabel: "Applications & Techniques",
+        apps: [
+          "Correlation Analysis",
+          "Regression Analysis",
+          "Statistical Modelling",
+        ],
+      },
     ],
   },
   {
