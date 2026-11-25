@@ -44,11 +44,14 @@ export default function Home() {
               </ButtonLink>
             )}
           </div>
-          <dl className="mt-10 flex flex-wrap gap-x-10 gap-y-4 border-t border-line pt-6">
+          <dl className="mt-8 grid grid-cols-2 gap-x-6 gap-y-5 border-t border-line pt-6 sm:grid-cols-3">
             {[
-              ["10+", "plant environments"],
-              ["50+", "camera streams"],
-              ["Jetson", "edge deployments"],
+              ["10+", "industries"],
+              ["15+", "plant visits across India"],
+              ["25+", "deployments worldwide"],
+              ["50+", "simultaneous camera streams"],
+              ["5+", "end-to-end industrial products"],
+              ["Edge", "device deployments"],
             ].map(([value, label]) => (
               <div key={value}>
                 <dt className="text-3xl font-bold tracking-tight">{value}</dt>
